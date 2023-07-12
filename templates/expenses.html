@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Expense Tracker</h1>
+  </header>
+
+  <section id="expenses-section">
+    <h2>Expenses</h2>
+    <table id="expenses-table">
+      <!-- Table headers -->
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <!-- Table rows with expense data -->
+      <tbody>
+        <!-- {% for expense in expenses %} is a template tag in the context of a server-side templating language like Jinja or Django. It indicates the start of a loop that iterates over a collection of expenses-->
+        {% for expense in expenses %}
+          <tr>
+            <td>{{ expense[1] }}</td>
+            <td>{{ expense[2] }}</td>
+            <td>{{ expense[3] }}</td>
+            <td>
+              <!-- Delete button form for each expense -->
+              <form action="/delete_expense/{{ expense[0] }}" method="post">
+                <button type="submit" class="delete-btn">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <!-- The {% endfor %} is a template tag that marks the end of a loop in a server-side templating language like Jinja or Django.-->
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section id="add-expense-section">
+    <h2>Add Expense</h2>
+    <!-- Expense form for adding a new expense -->
+    <form id="expense-form" action="/add_expense" method="post">
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" step="0.01" required>
+      </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      <button type="submit" class="submit-btn">Add Expense</button>
+    </form>
+    <!-- Date buttons for setting the date to today or yesterday -->
+    <div id="date-buttons">
+      <button type="button" class="date-btn" id="today-btn">Today</button>
+      <button type="button" class="date-btn" id="yesterday-btn">Yesterday</button>
+    </div>
+  </section>
+
+  <script src="{{ url_for('static', filename='js/expenses.js') }}"></script>
+  <script>
+    // JavaScript code for handling date buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get references to the buttons and date input element
+      var todayBtn = document.getElementById('today-btn');
+      var yesterdayBtn = document.getElementById('yesterday-btn');
+      var dateInput = document.getElementById('date');
+
+      // Event listener for the "Today" button
+      todayBtn.addEventListener('click', function() {
+        // Get the current date and set it as the value of the date input
+        var today = new Date().toISOString().split('T')[0];
+        dateInput.value = today;
+      });
+
+      // Event listener for the "Yesterday" button
+      yesterdayBtn.addEventListener('click', function() {
+        // Get the current date, subtract one day, and set it as the value of the date input
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        var yesterdayFormatted = yesterday.toISOString().split('T')[0];
+        dateInput.value = yesterdayFormatted;
+      });
+    });
+  </script>
+</body>
+</html>

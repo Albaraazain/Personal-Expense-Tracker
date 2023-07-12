@@ -1,0 +1,68 @@
+Step-by-step guide on how to create this Personal Expense Tracker project using MySQL, Python (with Flask), and HTML/CSS/JavaScript:
+
+Step 1: Set Up Your Development Environment**
+
+    1. Install Python: You can download it from the official Python website.
+
+    2. Install MySQL: You can download it from the official MySQL website. During installation, note down the username and password you set for the MySQL server as you'll need them later.
+
+    3. Install Visual Studio Code: You can download it from the official Visual Studio Code website.
+
+    4. Install Git: You can download it from the official Git website.
+
+Step 2: Create Your Project Directory
+
+    1. Create a new directory for your project on your computer.
+
+    2. Open Visual Studio Code and open the directory you just created.
+
+Step 3: Set Up Your Python Environment
+
+    1. Create a new virtual environment for Python in your project directory. This will help to keep your project's dependencies isolated from other Python projects on your computer.
+
+    2. Activate the virtual environment.
+
+    3. Install Flask and the MySQL Connector/Python library in your virtual environment.
+
+Step 4: Design Your Database
+
+    1. Plan out the structure of your expenses table. It should have columns for the expense ID, date, amount, and description.
+
+Step 5: Create Your Database and Table
+
+    1. Open the MySQL command-line client or a MySQL GUI like MySQL Workbench.
+
+    2. Log in with the username and password you set during installation.
+
+    3. Create a new database for your project.
+
+    4. In your new database, create the expenses table with the structure you planned in the previous step.
+
+Step 6: Write Your Backend Code
+
+    1. In your project directory, create a new Python file.
+
+    2. In this file, set up a new Flask application.
+
+    3. Connect to your MySQL database using the MySQL Connector/Python library.
+
+    4. Write routes for your Flask application to handle creating, reading, updating, and deleting expenses. These routes should interact with your database to perform the appropriate operations.
+
+Step 7: Create Your Frontend
+
+    1. In your project directory, create new HTML, CSS, and JavaScript files.
+
+    2. In your HTML file, create a form for adding new expenses and a table for displaying existing expenses.
+
+    3. In your CSS file, add styles to make your page look nice.
+
+    4. In your JavaScript file, write code to send requests to your Flask routes when the form is submitted and to update the table when the page loads.
+
+Step 8: Test Your Application
+
+    1. Start your Flask application.
+
+    2. Open your HTML file in a web browser.
+
+    3. Try adding, viewing, updating, and deleting expenses to make sure everything works as expected.
+
